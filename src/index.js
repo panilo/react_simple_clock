@@ -36,11 +36,34 @@ class Clock extends React.Component {
   }
 }
 
+class DisplayTextAndInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { sayHello: "World!" };
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  handleInputChange(event) {
+    const inputValue = event.target.value;
+    this.setState({ sayHello: inputValue });
+  }
+
+  render() {
+    return (
+      <>
+        <h1>Hello {this.state.sayHello}</h1>
+        <input
+          type="text"
+          onChange={(event) => this.handleInputChange(event)}
+        />
+      </>
+    );
+  }
+}
+
 const app = (
   <>
-    <SayHello name="World!" />
-    <br />
-    <Clock name="Danilo" />
+    <DisplayTextAndInput />
   </>
 );
 
